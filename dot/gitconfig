@@ -1,6 +1,6 @@
 [user]
-    name = Rogério Carvalho Schneider
-    email = stockrt@gmail.com
+    name = @@name@@
+    email = @@email@@
 [alias]
     co = checkout
     br = branch
