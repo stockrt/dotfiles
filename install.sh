@@ -87,21 +87,11 @@ do
     SOURCE="$L"
     DEST=${L/dot\//.}
 
-    # bashrc or bash_profile
-    if [[ "$DEST" == ".bashrc" ]]
-    then
-        case "$OSTYPE" in
-            darwin*)
-                cp -v $SOURCE ~/.bash_profile
-                ;;
-            *)
-                cp -v $SOURCE ~/$DEST
-                ;;
-        esac
-    # gitconfig
-    elif [[ "$DEST" == ".gitconfig" ]]
-    then
-        sed -e "s/@@name@@/$name/g" -e "s/@@email@@/$email/g" $SOURCE > ${SOURCE}.filtered
+    # gitconfig filter
+    if [[ "$DEST" == ".gitconfig" ]]; then
+        sed -e "s/@@name@@/$name/g"     \
+            -e "s/@@email@@/$email/g"   \
+            $SOURCE > ${SOURCE}.filtered
         cp -v ${SOURCE}.filtered ~/$DEST
         rm -f ${SOURCE}.filtered
     else
