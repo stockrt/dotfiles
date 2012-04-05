@@ -1,0 +1,127 @@
+" Basic
+set background=dark
+set undolevels=200
+set scrolloff=3
+set backspace=indent,eol,start
+set formatoptions=
+set nowrap
+set nostartofline
+set nocompatible
+set showcmd
+set ttyfast
+set ruler
+set lazyredraw
+"set whichwrap=b,s,h,l,<,>,[,]
+set whichwrap=b,s,h,l,<,>,~,[,]
+"set cpoptions=
+set cpoptions=aABceFsmq
+filetype plugin indent on
+filetype plugin on
+
+" Backup
+set backup                              " keeps file backups
+set backupdir=~/.vim/backup
+set directory=~/.vim/tmp
+
+" Code
+set showmatch                           " shows matching block delimiters
+set matchtime=5
+set syntax=on                           " nice colors when coding
+syntax on                               " nice colors when coding
+highlight Vars ctermbg=yellow ctermfg=black
+let m = matchadd('Vars', '%\w\+%')      " matches %VAR% %var% %T_var%
+let m = matchadd('Vars', '@\w\+@')      " matches @VAR@ @var@ @T_var@
+"let m = matchadd('Vars', '\$\w\+')      " matches $VAR $var $T_var
+set listchars=tab:>-,trail:-            " shows tabs and trailing spaces and tabs
+set list
+
+" Indent
+set autoindent                          " indentation is important
+set expandtab                           " uses spaces for tab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+
+" Width
+set textwidth=80                        " try not to be much verbose when coding or writting e-mails
+"highlight Overwidth ctermbg=grey ctermfg=red
+highlight Overwidth ctermbg=red
+let m = matchadd('Overwidth', '\%80v.*')    " if we are passing the limits, warn
+
+" Search
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+
+" Defines
+ab ==l ----------------------------------------------------------------------------
+ab ==# ############################################################################
+" Put date in changelog format
+map ,d :r!date +"* \%a \%b \%d \%Y - Rogério Carvalho Schneider <stockrt@gmail.com> - 0.1.0-1"<CR>
+" Dos2unix
+vmap ,du :s/\r//g<CR>
+" Remove all trailing spaces and tabs
+vmap ,tt :s/[ <tab>]*$//g<CR>
+" Replace all tabs with 4 spaces
+vmap ,ts :s/<tab>/    /g<CR>
+
+" Mappings
+map <F2> <ESC>:bp<CR>                            " previous opened file
+map <F3> <ESC>:bn<CR>                            " next opened file
+map <F4> <ESC>:set number!<Bar>set number?<CR>   " number on/off
+
+" Normalize
+"TODO: map <F7> mzgg=G`z<CR> assim ele volta para a linha corrente
+"map <F5> <ESC>ggVG,du<CR> | <ESC>ggVG,tt<CR> | <ESC>ggVG,ts<CR> " dos2unix entire file + remove trailing spaces and tabs for the entire file + replace tabs for spaces in the entire file
+map <F5> <ESC>ggVG,du<CR>                       " dos2unix entire file
+map <F6> <ESC>ggVG,tt<CR>                       " remove trailing spaces and tabs for the entire file
+map <F7> <ESC>ggVG,ts<CR>                       " replace tabs for spaces in the entire file
+
+" Paste
+map <F8> <ESC>:set paste!<Bar>set paste?<CR>     " paste on/off
+
+" Rot13
+map <F9> <ESC>ggVGg?                             " encode/decode for fun
+
+" Reading big lines
+map <F12> <ESC>:highlight clear Overwidth<CR>:highlight clear Vars<CR>:set wrap<CR>:set textwidth=0<CR>
+"map <Fxx> :set wrap!<Bar>set wrap?<CR>       " wrap on/off
+
+" Status
+function! SyntaxItem()
+    return synIDattr(synID(line("."),col("."),1),"name")
+endfunction
+
+set fileformats=unix,dos,mac
+set laststatus=2
+if has('statusline')
+    set statusline=%#Question#                                       " set highlighting
+    set statusline+=%-2.2n\                                          " buffer (file) number
+    set statusline+=%#WarningMsg#                                    " set highlighting
+    set statusline+=%F\                                              " file name
+    set statusline+=%#Question#                                      " set highlighting
+    set statusline+=%m%r%h%w\                                        " flags
+    set statusline+=syntax:%y\                                       " file syntax
+    set statusline+=format:[%{&ff}]\                                 " file format
+    set statusline+=encoding:[%{(&fenc==\"\"?&enc:&fenc)}]\          " file encoding
+    set statusline+=type:[%{strlen(&ft)?&ft:'none'}]\                " file type
+    set statusline+=%{((exists(\"+bomb\")\ &&\ &bomb)?\"B,\":\"\")}  " BOM
+    set statusline+=%{&spelllang},                                   " language of spelling checker
+    set statusline+=%{SyntaxItem()}                                  " syntax highlight group under cursor
+    set statusline+=%=                                               " ident to the right
+    set statusline+=hexa:[0x%2B]\                                    " character code under cursor
+    set statusline+=ascii:[%3b]\                                     " character code under cursor
+    set statusline+=\ \                                              " spaces
+    set statusline+=[%l/%L]\ (%p%%)\ [%l,%c%V]\ %<%P\                " lines/columns
+endif
+
+" Mouse
+"set mouse=a                " use mouse for everything
+
+" Save folds
+"au BufWinLeave * mkview
+"au BufWinEnter * silent loadview
+"
+"setlocal spell spelllang=en_us
+"setlocal spell spelllang=

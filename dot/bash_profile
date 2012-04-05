@@ -1,0 +1,81 @@
+# User specific aliases and functions
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias vi='vim'
+
+if [[ "$OSTYPE" == "linux-gnu" ]]
+then
+    alias ls='ls --color=tty'
+    alias ll='ls -l --color=tty'
+    alias l.='ls -d .* --color=tty'
+    alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
+else
+    alias ls='ls -G'
+    alias ll='ls -l -G'
+    alias l.='ls -d .* -G'
+fi
+
+alias egrep="egrep --color"
+alias grep="grep --color"
+#alias rz='lrz -br'
+#alias sz='lsz -br'
+
+export LANG="en_US.UTF-8"
+export LANGUAGE="en_US.UTF-8"
+export SYSTERM="linux"
+export SYSFONT="lat1u-16"
+export LC_COLLATE="POSIX"
+export LS_COLORS="$LS_COLORS:di=01;33:*.rpm=01;31"
+export LS_COLORS=$(echo $LS_COLORS | sed 's/00;31/01;31/g')
+export HOSTNAME=$(echo "${HOSTNAME}" | cut -d. -f 1)
+export EDITOR="vim"
+export HISTTIMEFORMAT="%a %b %d %H:%M:%S %Z %Y - "
+export HISTFILESIZE=99999
+export HISTSIZE=99999
+
+export PATH="$PATH:/opt/local/bin:/opt/local/sbin:/Users/stockrt/Dropbox/stockrt/scripts"
+
+export JAVA_HOME="/usr/java/default"
+export JDK_HOME="/usr/java/default"
+
+inversor() {
+    # Dividir a saida em linhas invertidas:
+    rev | while read linha; do
+        # Dividir cada linha invertida em colunas:
+        for cn in `echo $linha`; do
+            # Mostrar coluna, desinvertendo suas letras
+            echo -n `echo $cn | rev`
+            # Dar espaco
+            echo -n " "
+        done
+
+        # pular linha
+        echo ""
+    done
+}
+
+# Ruby
+[[ -f "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+[[ -f "$HOME/.rvm/scripts/completion" ]] && source "$HOME/.rvm/scripts/completion"
+
+# Python
+[[ -f "$HOME/.virtualenvs/venv/bin/activate" ]] && source "$HOME/.virtualenvs/venv/bin/activate"
+[[ -f "/usr/python27/bin/virtualenvwrapper.sh" ]] && source "/usr/python27/bin/virtualenvwrapper.sh"
+
+_compssh () {
+    cur=${COMP_WORDS[COMP_CWORD]};
+    COMPREPLY=($(compgen -W '$(cat ${HOME}/.ssh/config | grep "^Host\b" - | sed -e "s/Host //")' -- $cur))
+}
+complete -F _compssh ssh
+
+# Git
+if [[ -f "$HOME/.git-completion.sh" ]]
+then
+    source "$HOME/.git-completion.sh"
+    export PS1='\t \u@\h \w$(__git_ps1 " (%s)") \$ '
+    export GIT_PS1_SHOWDIRTYSTATE=1
+    export GIT_PS1_SHOWSTASHSTATE=1
+    export GIT_PS1_SHOWUNTRACKEDFILES=1
+    export GIT_PS1_SHOWUPSTREAM="auto verbose"
+fi
