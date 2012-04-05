@@ -2,17 +2,95 @@
 
 # This script installs the dotfiles in your home.
 
-# files
+
+##########
+## ARGS ##
+##########
+
+usage () {
+    echo "
+This script installs the dotfiles in your homedir.
+
+Usage: $0 -n <name> -e <email>
+    -n Your name.
+    -e Your e-mail.
+
+Example:
+    $0 -n \"Rogério Carvalho Schneider\" -e stockrt@gmail.com
+"
+}
+
+while getopts n:e: options
+do
+    case "$options" in
+        n)
+            name="$OPTARG"
+            ;;
+        e)
+            email="$OPTARG"
+            ;;
+        h)
+            usage
+            exit 0
+            ;;
+        *)
+            usage
+            exit 1
+            ;;
+    esac
+done
+shift $(($OPTIND - 1))
+
+if [[ -z "$name" || -z "$email" ]]
+then
+    usage
+    exit 1
+fi
+
+
+#############
+## CONFIGS ##
+#############
+
+# Exit on command or variable expansion errors
+set -e -u
+
+
+##########
+## MAIN ##
+##########
+
+# Files
 echo
 find dot -mindepth 1 -maxdepth 1 -type f |\
 while read L
 do
     SOURCE="$L"
     DEST=${L/dot\//.}
-    cp -v $SOURCE ~/$DEST
+
+    # bashrc or bash_profile
+    if [[ "$DEST" == ".bashrc" ]]
+    then
+        case "$OSTYPE" in
+            darwin*)
+                cp -v $SOURCE ~/.bash_profile
+                ;;
+            *)
+                cp -v $SOURCE ~/$DEST
+                ;;
+        esac
+    # gitconfig
+    elif [[ "$DEST" == ".gitconfig" ]]
+    then
+        sed -e "s/@@name@@/$name/g" -e "s/@@email@@/$email/g" $SOURCE > ${SOURCE}.filtered
+        cp -v ${SOURCE}.filtered ~/$DEST
+        rm -f ${SOURCE}.filtered
+    else
+        cp -v $SOURCE ~/$DEST
+    fi
 done
 
-# dirs
+# Dirs
 echo
 find dot -mindepth 1 -maxdepth 1 -type d |\
 while read L
@@ -22,20 +100,6 @@ do
     rsync -rv $SOURCE/ ~/$DEST/
 done
 
-## profile.d
-#echo
-#find profile.d -mindepth 1 -maxdepth 1 -type f |\
-#while read L
-#do
-#    SOURCE="$L"
-#    DEST="/etc/$L"
-#    sudo cp -v $SOURCE $DEST
-#    sudo chmod -v 755 $DEST
-#done
+echo
 
-echo
-echo "#####################################################################"
-echo "IF YOU ARE **NOT** \"Rogério Carvalho Schneider <stockrt@gmail.com>\"
-REMEMBER TO CHANGE THE USER NAME AND E-MAIL IN ~/.gitconfig"
-echo "#####################################################################"
-echo
+exit 0
