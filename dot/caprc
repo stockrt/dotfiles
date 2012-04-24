@@ -1,0 +1,2 @@
+# gem install capistrano_colors
+require 'capistrano_colors'
