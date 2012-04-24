@@ -30,16 +30,18 @@ usage () {
     echo "
 This script installs the dotfiles in your homedir.
 
-Usage: $0 -n <name> -e <email>
-    -n Your name.
-    -e Your e-mail.
+Usage: $0 -n <name> -e <email> -u <github user> -p <github password>
+    -n Your full name.
+    -e E-mail address.
+    -u Github user.
+    -p Github password.
 
 Example:
-    $0 -n \"Rogério Carvalho Schneider\" -e stockrt@gmail.com
+    $0 -n \"Rogério Carvalho Schneider\" -e stockrt@gmail.com -u stockrt -p secret
 "
 }
 
-while getopts n:e: options
+while getopts n:e:u:p: options
 do
     case "$options" in
         n)
@@ -47,6 +49,12 @@ do
             ;;
         e)
             email="$OPTARG"
+            ;;
+        u)
+            gituser="$OPTARG"
+            ;;
+        p)
+            gitpass="$OPTARG"
             ;;
         h)
             usage
@@ -60,7 +68,7 @@ do
 done
 shift $(($OPTIND - 1))
 
-if [[ -z "$name" || -z "$email" ]]
+if [[ -z "$name" || -z "$email" || -z "$gituser" || -z "$gitpass" ]]
 then
     usage
     exit 1
@@ -89,8 +97,10 @@ do
 
     # gitconfig filter
     if [[ "$DEST" == ".gitconfig" ]]; then
-        sed -e "s/@@name@@/$name/g"     \
-            -e "s/@@email@@/$email/g"   \
+        sed -e "s/@@name@@/$name/g"         \
+            -e "s/@@email@@/$email/g"       \
+            -e "s/@@gituser@@/$gituser/g"   \
+            -e "s/@@gitpass@@/$gitpass/g"   \
             $SOURCE > ${SOURCE}.filtered
         cp -v ${SOURCE}.filtered ~/$DEST
         rm -f ${SOURCE}.filtered
