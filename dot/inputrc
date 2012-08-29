@@ -1,0 +1,4 @@
+set bell-style visible
+set completion-ignore-case on
+set completion-map-case on
+set mark-symlinked-directories on
