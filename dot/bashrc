@@ -9,7 +9,7 @@ then
     alias ls='ls --color=tty'
     alias ll='ls -l --color=tty'
     alias l.='ls -d .* --color=tty'
-    alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
+    alias which='alias | /usr/bin/which'
 else
     alias ls='ls -G'
     alias ll='ls -l -G'
