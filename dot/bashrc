@@ -58,7 +58,6 @@ inversor() {
 # Ruby
 [[ -f "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 [[ -f "$HOME/.rvm/scripts/completion" ]] && source "$HOME/.rvm/scripts/completion"
-[[ -f "$HOME/.rvm/scripts/rvm" ]] && rvm use ruby-1.9.2-p320@mygems --create
 
 # Python
 [[ -f "$HOME/.virtualenvs/venv/bin/activate" ]] && source "$HOME/.virtualenvs/venv/bin/activate"
