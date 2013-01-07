@@ -35,6 +35,7 @@ export HISTFILESIZE=99999
 export HISTSIZE=99999
 
 export PATH="$PATH:/opt/local/bin:/opt/local/sbin:/Users/stockrt/Dropbox/stockrt/scripts"
+export PATH="/usr/python27/bin:/usr/python26/bin:$PATH"
 
 export JAVA_HOME="/usr/java/default"
 export JDK_HOME="/usr/java/default"
