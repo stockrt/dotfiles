@@ -64,6 +64,7 @@ export rvm_path="$HOME/.rvm"
 [[ -f "$HOME/.virtualenvs/venv/bin/activate" ]] && source "$HOME/.virtualenvs/venv/bin/activate"
 [[ -f "/usr/python27/bin/virtualenvwrapper.sh" ]] && source "/usr/python27/bin/virtualenvwrapper.sh"
 
+# SSH
 _compssh () {
     cur=${COMP_WORDS[COMP_CWORD]};
     COMPREPLY=($(compgen -W '$(cat ${HOME}/.ssh/config | grep "^Host\b" - | sed -e "s/Host //")' -- $cur))
