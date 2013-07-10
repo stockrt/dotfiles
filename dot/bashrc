@@ -57,8 +57,8 @@ inversor() {
 }
 
 # Ruby
-[[ -f "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-[[ -f "$HOME/.rvm/scripts/completion" ]] && source "$HOME/.rvm/scripts/completion"
+export rvm_path="$HOME/.rvm"
+[[ -f "$rvm_path/scripts/completion" ]] && source "$rvm_path/scripts/completion"
 
 # Python
 [[ -f "$HOME/.virtualenvs/venv/bin/activate" ]] && source "$HOME/.virtualenvs/venv/bin/activate"
@@ -80,3 +80,6 @@ then
     export GIT_PS1_SHOWUNTRACKEDFILES=1
     export GIT_PS1_SHOWUPSTREAM="auto verbose"
 fi
+
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
