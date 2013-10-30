@@ -38,9 +38,6 @@ export PATH="$PATH:/opt/local/bin:/opt/local/sbin:/Users/stockrt/Dropbox/stockrt
 export PATH="$PATH:/usr/local/mysql/bin"
 export PATH="/usr/python27/bin:/usr/python26/bin:$PATH"
 
-export JAVA_HOME="/usr/java/default"
-export JDK_HOME="/usr/java/default"
-
 inversor() {
     # Dividir a saida em linhas invertidas:
     rev | while read linha; do
