@@ -54,14 +54,14 @@ inversor() {
     done
 }
 
+# Python
+[[ -f "$HOME/.virtualenvs/venv/bin/activate" ]] && source "$HOME/.virtualenvs/venv/bin/activate"
+[[ -f "/usr/python27/bin/virtualenvwrapper.sh" ]] && source "/usr/python27/bin/virtualenvwrapper.sh"
+
 # Ruby
 export rvm_path="$HOME/.rvm"
 [[ -s "$rvm_path/scripts/rvm" ]] && source "$rvm_path/scripts/rvm"
 [[ -f "$rvm_path/scripts/completion" ]] && source "$rvm_path/scripts/completion"
-
-# Python
-[[ -f "$HOME/.virtualenvs/venv/bin/activate" ]] && source "$HOME/.virtualenvs/venv/bin/activate"
-[[ -f "/usr/python27/bin/virtualenvwrapper.sh" ]] && source "/usr/python27/bin/virtualenvwrapper.sh"
 
 # SSH
 _compssh () {
