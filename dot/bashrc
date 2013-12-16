@@ -7,12 +7,12 @@ alias vi='vim'
 if [[ "$OSTYPE" == "linux-gnu" ]]
 then
     alias ls='ls --color=tty'
-    alias ll='ls -l --color=tty'
+    alias ll='ls -la --color=tty'
     alias l.='ls -d .* --color=tty'
     alias which='alias | /usr/bin/which'
 else
     alias ls='ls -G'
-    alias ll='ls -l -G'
+    alias ll='ls -la -G'
     alias l.='ls -d .* -G'
 fi
 
