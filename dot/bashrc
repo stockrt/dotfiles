@@ -21,6 +21,10 @@ alias grep="grep --color"
 #alias rz='lrz -br'
 #alias sz='lsz -br'
 
+# Tahoe
+alias t='tahoe -d $HOME/.tahoe'
+alias tp='tahoe -d $HOME/.tahoe-private'
+
 export LANG="en_US.UTF-8"
 export LANGUAGE="en_US.UTF-8"
 export SYSTERM="linux"
