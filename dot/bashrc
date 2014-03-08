@@ -23,7 +23,9 @@ alias grep="grep --color"
 
 # Tahoe
 alias t='tahoe -d $HOME/.tahoe'
+alias tw='tahoe -d $HOME/.tahoe webopen'
 alias tp='tahoe -d $HOME/.tahoe-private'
+alias tpw='tahoe -d $HOME/.tahoe-private webopen'
 
 export LANG="en_US.UTF-8"
 export LANGUAGE="en_US.UTF-8"
