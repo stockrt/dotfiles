@@ -65,8 +65,9 @@ inversor() {
 }
 
 # Python
-[[ -f "$HOME/.virtualenvs/venv/bin/activate" ]] && source "$HOME/.virtualenvs/venv/bin/activate"
-[[ -f "$HOME/.virtualenvs/venv/bin/virtualenvwrapper.sh" ]] && source "$HOME/.virtualenvs/venv/bin/virtualenvwrapper.sh"
+alias python-activate='source "$HOME/.virtualenvs/venv/bin/activate" ; source "$HOME/.virtualenvs/venv/bin/virtualenvwrapper.sh"'
+#[[ -f "$HOME/.virtualenvs/venv/bin/activate" ]] && source "$HOME/.virtualenvs/venv/bin/activate"
+#[[ -f "$HOME/.virtualenvs/venv/bin/virtualenvwrapper.sh" ]] && source "$HOME/.virtualenvs/venv/bin/virtualenvwrapper.sh"
 
 # Ruby
 export rvm_path="$HOME/.rvm"
