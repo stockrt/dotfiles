@@ -43,8 +43,8 @@ export HISTSIZE=99999
 export PATH="$PATH:/opt/local/bin:/opt/local/sbin"
 export PATH="$PATH:$HOME/Dropbox/stockrt/scripts"
 export PATH="$PATH:$HOME/node_modules/.bin"
-export PATH="$PATH:$HOME/adt-bundle/sdk/tools"
-export PATH="$PATH:$HOME/adt-bundle/sdk/platform-tools"
+export PATH="$PATH:$HOME/android/adt-bundle/sdk/tools"
+export PATH="$PATH:$HOME/android/adt-bundle/sdk/platform-tools"
 export PATH="$PATH:/usr/local/mysql/bin"
 export PATH="/usr/python27/bin:/usr/python26/bin:$PATH"
 
