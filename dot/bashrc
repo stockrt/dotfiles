@@ -49,6 +49,12 @@ export PATH="$PATH:$HOME/android/android-studio/bin"
 export PATH="$PATH:/usr/local/mysql/bin"
 export PATH="/usr/python27/bin:/usr/python26/bin:$PATH"
 
+# Java
+export JAVA_HOME="/opt/java"
+export PATH="$PATH:/opt/java/bin"
+export PATH="$PATH:/opt/apache-ant/bin"
+export PATH="$PATH:/opt/apache-maven/bin"
+
 inversor() {
     # Dividir a saida em linhas invertidas:
     rev | while read linha; do
