@@ -104,3 +104,5 @@ then
     export GIT_PS1_SHOWUNTRACKEDFILES="true"
     export GIT_PS1_SHOWUPSTREAM="auto verbose"
 fi
+
+source /etc/profile.d/aliases-loader.sh
