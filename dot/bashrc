@@ -106,4 +106,5 @@ then
     export GIT_PS1_SHOWUPSTREAM="auto verbose"
 fi
 
-source /etc/profile.d/aliases-loader.sh
+# Aliases all and others, from /opt
+[[ -f /etc/profile.d/aliases-loader.sh ]] && source /etc/profile.d/aliases-loader.sh
