@@ -42,13 +42,17 @@ export HISTSIZE=99999
 
 export PATH="$PATH:/opt/local/bin:/opt/local/sbin"
 export PATH="$PATH:$HOME/Dropbox/stockrt/scripts"
-export PATH="$PATH:$HOME/node_modules/.bin"
-export PATH="$PATH:$HOME/android/adt-bundle/sdk/tools"
-export PATH="$PATH:$HOME/android/adt-bundle/sdk/platform-tools"
+export PATH="$PATH:$HOME/android/android-sdk/build-tools/21.1.1"
+export PATH="$PATH:$HOME/android/android-sdk/platform-tools"
+export PATH="$PATH:$HOME/android/android-sdk/tools"
 export PATH="$PATH:$HOME/android/android-studio/bin"
 export PATH="$PATH:$HOME/eclipse"
+export PATH="$PATH:$HOME/node_modules/.bin"
 export PATH="$PATH:/usr/local/mysql/bin"
 export PATH="/usr/python27/bin:/usr/python26/bin:$PATH"
+
+# Android
+export ANDROID_HOME="$HOME/android/android-sdk"
 
 # Java
 export JAVA_HOME="/opt/java"
