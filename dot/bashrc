@@ -82,9 +82,9 @@ alias python-activate='source "$HOME/.virtualenvs/venv/bin/activate" ; source "$
 #[[ -f "$HOME/.virtualenvs/venv/bin/virtualenvwrapper.sh" ]] && source "$HOME/.virtualenvs/venv/bin/virtualenvwrapper.sh"
 
 # Ruby
-export rvm_path="$HOME/.rvm"
-[[ -s "$rvm_path/scripts/rvm" ]] && source "$rvm_path/scripts/rvm"
-[[ -f "$rvm_path/scripts/completion" ]] && source "$rvm_path/scripts/completion"
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+[[ -f "$HOME/.rvm/scripts/completion" ]] && source "$HOME/.rvm/scripts/completion"
 
 # SSH
 _compssh () {
