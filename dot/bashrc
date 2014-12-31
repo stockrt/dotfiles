@@ -27,6 +27,17 @@ alias tw='tahoe -d $HOME/.tahoe webopen'
 alias tp='tahoe -d $HOME/.tahoe-private'
 alias tpw='tahoe -d $HOME/.tahoe-private webopen'
 
+# Dark
+alias s='export HISTFILE=/dev/null && exit' # no bash history
+alias lk='sudo logkeys -s -d /dev/input/event5 -o /var/log/logkeys.log' # start logkeys
+alias unlk='sudo logkeys -k >/dev/null 2>&1' # stop logkeys
+alias lkv='sudo logkeys -s -d /dev/input/event5 -o /var/log/logkeys.log ; sleep 1 ; pslk' # start logkeys (verbose check)
+alias unlkv='sudo logkeys -k ; sleep 1 ; pslk' # stop logkeys (verbose check - only display if already stopped)
+alias pslk='ps -ef | grep [l]ogkeys'
+alias catlk='sudo cat /var/log/logkeys.log'
+alias vilk='sudo vi /var/log/logkeys.log'
+alias rmlk='sudo rm -f /var/log/logkeys.log'
+
 export LANG="en_US.UTF-8"
 export LANGUAGE="en_US.UTF-8"
 export SYSTERM="linux"
