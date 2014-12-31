@@ -52,7 +52,7 @@ export HISTFILESIZE=99999
 export HISTSIZE=99999
 
 export PATH="$PATH:/opt/local/bin:/opt/local/sbin"
-export PATH="$PATH:$HOME/Dropbox/stockrt/scripts"
+export PATH="$PATH:/home/stockrt/Dropbox/stockrt/scripts"
 export PATH="$PATH:$HOME/android/android-sdk/build-tools/21.1.1"
 export PATH="$PATH:$HOME/android/android-sdk/platform-tools"
 export PATH="$PATH:$HOME/android/android-sdk/tools"
