@@ -35,6 +35,7 @@ alias lkv='sudo logkeys -s -d /dev/input/event5 -o /var/log/logkeys.log ; sleep 
 alias unlkv='sudo logkeys -k ; sleep 1 ; pslk' # stop logkeys (verbose check - only display if already stopped)
 alias pslk='ps -ef | grep [l]ogkeys'
 alias catlk='sudo cat /var/log/logkeys.log'
+alias taillk='sudo tail -n 100 -f /var/log/logkeys.log'
 alias vilk='sudo vi /var/log/logkeys.log'
 alias rmlk='sudo rm -f /var/log/logkeys.log'
 
