@@ -90,7 +90,7 @@ inversor() {
 }
 
 # Python
-alias python-activate='source "$HOME/.virtualenvs/venv/bin/activate" ; source "$HOME/.virtualenvs/venv/bin/virtualenvwrapper.sh"'
+alias pa='source "$HOME/.virtualenvs/venv/bin/activate" ; source "$HOME/.virtualenvs/venv/bin/virtualenvwrapper.sh"'
 #[[ -f "$HOME/.virtualenvs/venv/bin/activate" ]] && source "$HOME/.virtualenvs/venv/bin/activate"
 #[[ -f "$HOME/.virtualenvs/venv/bin/virtualenvwrapper.sh" ]] && source "$HOME/.virtualenvs/venv/bin/virtualenvwrapper.sh"
 
