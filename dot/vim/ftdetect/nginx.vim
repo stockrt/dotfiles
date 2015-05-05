@@ -1,0 +1,2 @@
+" detect puppet filetype
+au BufRead,BufNewFile *.config set filetype=nginx
