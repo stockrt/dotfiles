@@ -61,6 +61,7 @@ export PATH="$PATH:$HOME/android/android-studio/bin"
 export PATH="$PATH:$HOME/android/android-ndk-r10d"
 export PATH="$PATH:$HOME/eclipse"
 export PATH="$PATH:$HOME/node_modules/.bin"
+export PATH="$PATH:$HOME/node/bin"
 export PATH="$PATH:/usr/local/mysql/bin"
 export PATH="/usr/python27/bin:/usr/python26/bin:$PATH"
 
