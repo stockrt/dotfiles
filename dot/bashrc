@@ -124,5 +124,6 @@ then
     export GIT_PS1_SHOWUPSTREAM="auto verbose"
 fi
 
-# Aliases all and others, from /opt
+# Aliases all and other custom (private) aliases
 [[ -f /etc/profile.d/aliases-loader.sh ]] && source /etc/profile.d/aliases-loader.sh
+[[ -f "$HOME/.local_bashrc" ]] && source "$HOME/.local_bashrc"
