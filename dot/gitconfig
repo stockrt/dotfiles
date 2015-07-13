@@ -13,7 +13,7 @@
     ds = diff --stat
     ap = add -p
     ci = commit
-    ld = log --decorate
+    ld = log --decorate --oneline
     lp = log -p --decorate
     gl = log --graph --pretty=oneline --abbrev-commit
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
