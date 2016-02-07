@@ -65,7 +65,6 @@ export PATH="$PATH:$HOME/node/bin"
 export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:/usr/local/mysql/bin"
 export PATH="/usr/python27/bin:/usr/python26/bin:$PATH"
-
 export GOPATH="$HOME/go"
 
 # Android
@@ -126,6 +125,10 @@ then
     export GIT_PS1_SHOWUNTRACKEDFILES="true"
     export GIT_PS1_SHOWUPSTREAM="auto verbose"
 fi
+
+# Modern times
+eval $(direnv hook bash)
+eval $(docker-machine env)
 
 # Aliases all and other custom (private) aliases
 [[ -f /etc/profile.d/aliases-loader.sh ]] && source /etc/profile.d/aliases-loader.sh
