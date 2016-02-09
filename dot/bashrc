@@ -58,7 +58,7 @@ inversor() {
 }
 
 # Bash
-source "$HOME/.bash_completion"
+source "$HOME/.bash_completion_funcs"
 export LANG="en_US.UTF-8"
 export LANGUAGE="en_US.UTF-8"
 export SYSTERM="linux"
