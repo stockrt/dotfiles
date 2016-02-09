@@ -1,4 +1,5 @@
 # User specific aliases and functions
+
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
@@ -56,6 +57,8 @@ inversor() {
     done
 }
 
+# Bash
+source "$HOME/.bash_completion"
 export LANG="en_US.UTF-8"
 export LANGUAGE="en_US.UTF-8"
 export SYSTERM="linux"
