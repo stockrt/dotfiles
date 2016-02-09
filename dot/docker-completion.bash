@@ -148,16 +148,20 @@ __docker_complete_containers_and_images() {
 	COMPREPLY+=( "${containers[@]}" )
 }
 
+# Returns the names and optionally IDs of networks.
+# The selection can be narrowed by an optional filter parameter, e.g. 'type=custom'
 __docker_networks() {
+	local filter="$1"
 	# By default, only network names are completed.
 	# Set DOCKER_COMPLETION_SHOW_NETWORK_IDS=yes to also complete network IDs.
 	local fields='$2'
 	[ "${DOCKER_COMPLETION_SHOW_NETWORK_IDS}" = yes ] && fields='$1,$2'
-	__docker_q network ls --no-trunc | awk "NR>1 {print $fields}"
+	__docker_q network ls --no-trunc ${filter:+-f "$filter"} | awk "NR>1 {print $fields}"
+	#__docker_q network ls --no-trunc | awk "NR>1 {print $fields}"
 }
 
 __docker_complete_networks() {
-	COMPREPLY=( $(compgen -W "$(__docker_networks)" -- "$cur") )
+	COMPREPLY=( $(compgen -W "$(__docker_networks $@)" -- "$cur") )
 }
 
 __docker_complete_network_ids() {
@@ -407,7 +411,7 @@ __docker_complete_log_options() {
 	local awslogs_options="awslogs-region awslogs-group awslogs-stream"
 	local fluentd_options="env fluentd-address labels tag"
 	local gelf_options="env gelf-address labels tag"
-	local journald_options="env labels"
+	local journald_options="env labels tag"
 	local json_file_options="env labels max-file max-size"
 	local syslog_options="syslog-address syslog-tls-ca-cert syslog-tls-cert syslog-tls-key syslog-tls-skip-verify syslog-facility tag"
 	local splunk_options="env labels splunk-caname splunk-capath splunk-index splunk-insecureskipverify splunk-source splunk-sourcetype splunk-token splunk-url tag"
@@ -529,6 +533,15 @@ __docker_complete_signals() {
 		SIGUSR2
 	)
 	COMPREPLY=( $( compgen -W "${signals[*]} ${signals[*]#SIG}" -- "$( echo $cur | tr '[:lower:]' '[:upper:]')" ) )
+}
+
+__docker_complete_user_group() {
+	if [[ $cur == *:* ]] ; then
+		COMPREPLY=( $(compgen -g -- "${cur#*:}") )
+	else
+		COMPREPLY=( $(compgen -u -S : -- "$cur") )
+		__docker_nospace
+	fi
 }
 
 # global options that may appear after the docker command
@@ -735,6 +748,7 @@ _docker_daemon() {
 		--ip-masq=false
 		--iptables=false
 		--ipv6
+		--raw-logs
 		--selinux-enabled
 		--userland-proxy=false
 	"
@@ -847,12 +861,7 @@ _docker_daemon() {
 			return
 			;;
 		--userns-remap)
-			if [[ $cur == *:* ]] ; then
-				COMPREPLY=( $(compgen -g -- "${cur#*:}") )
-			else
-				COMPREPLY=( $(compgen -u -S : -- "$cur") )
-				__docker_nospace
-			fi
+			__docker_complete_user_group
 			return
 			;;
 		$(__docker_to_extglob "$options_with_args") )
@@ -991,6 +1000,7 @@ _docker_exec() {
 
 	case "$prev" in
 		--user|-u)
+			__docker_complete_user_group
 			return
 			;;
 	esac
@@ -1357,7 +1367,7 @@ _docker_network_rm() {
 			COMPREPLY=( $( compgen -W "--help" -- "$cur" ) )
 			;;
 		*)
-			__docker_complete_networks
+			__docker_complete_networks type=custom
 	esac
 }
 
@@ -1758,11 +1768,20 @@ _docker_run() {
 						__docker_nospace
 					fi
 					;;
+				seccomp:*)
+					local cur=${cur##*:}
+					_filedir
+					COMPREPLY+=( $( compgen -W "unconfined" -- "$cur" ) )
+					;;
 				*)
 					COMPREPLY=( $( compgen -W "label apparmor seccomp" -S ":" -- "$cur") )
 					__docker_nospace
 					;;
 			esac
+			return
+			;;
+		--user|-u)
+			__docker_complete_user_group
 			return
 			;;
 		--volume-driver)
@@ -1869,7 +1888,7 @@ _docker_stop() {
 _docker_tag() {
 	case "$cur" in
 		-*)
-			COMPREPLY=( $( compgen -W "--force -f --help" -- "$cur" ) )
+			COMPREPLY=( $( compgen -W "--help" -- "$cur" ) )
 			;;
 		*)
 			local counter=$(__docker_pos_first_nonflag)
