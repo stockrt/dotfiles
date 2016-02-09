@@ -39,43 +39,7 @@ alias taillk='sudo tail -n 100 -f /var/log/logkeys.log'
 alias vilk='sudo vi /var/log/logkeys.log'
 alias rmlk='sudo rm -f /var/log/logkeys.log'
 
-export LANG="en_US.UTF-8"
-export LANGUAGE="en_US.UTF-8"
-export SYSTERM="linux"
-export SYSFONT="lat1u-16"
-export LC_COLLATE="POSIX"
-export LS_COLORS="$LS_COLORS:di=01;33:*.rpm=01;31"
-export LS_COLORS=$(echo $LS_COLORS | sed 's/00;31/01;31/g')
-export HOSTNAME=$(echo "${HOSTNAME}" | cut -d. -f 1)
-export EDITOR="vim"
-export HISTTIMEFORMAT="%a %b %d %H:%M:%S %Z %Y - "
-export HISTFILESIZE=99999
-export HISTSIZE=99999
-
-export PATH="$PATH:/opt/local/bin:/opt/local/sbin"
-export PATH="$PATH:/Users/stockrt/Dropbox/stockrt/scripts"
-export PATH="$PATH:$HOME/android/android-sdk/build-tools/21.1.1"
-export PATH="$PATH:$HOME/android/android-sdk/platform-tools"
-export PATH="$PATH:$HOME/android/android-sdk/tools"
-export PATH="$PATH:$HOME/android/android-studio/bin"
-export PATH="$PATH:$HOME/android/android-ndk-r10d"
-export PATH="$PATH:$HOME/eclipse"
-export PATH="$PATH:$HOME/node_modules/.bin"
-export PATH="$PATH:$HOME/node/bin"
-export PATH="$PATH:$HOME/go/bin"
-export PATH="$PATH:/usr/local/mysql/bin"
-export PATH="/usr/python27/bin:/usr/python26/bin:$PATH"
-export GOPATH="$HOME/go"
-
-# Android
-export ANDROID_HOME="$HOME/android/android-sdk"
-
-# Java
-export JAVA_HOME="/opt/java"
-export PATH="$PATH:/opt/java/bin"
-export PATH="$PATH:/opt/apache-ant/bin"
-export PATH="$PATH:/opt/apache-maven/bin"
-
+# Def
 inversor() {
     # Dividir a saida em linhas invertidas:
     rev | while read linha; do
@@ -92,7 +56,49 @@ inversor() {
     done
 }
 
+export LANG="en_US.UTF-8"
+export LANGUAGE="en_US.UTF-8"
+export SYSTERM="linux"
+export SYSFONT="lat1u-16"
+export LC_COLLATE="POSIX"
+export LS_COLORS="$LS_COLORS:di=01;33:*.rpm=01;31"
+export LS_COLORS=$(echo $LS_COLORS | sed 's/00;31/01;31/g')
+export HOSTNAME=$(echo "${HOSTNAME}" | cut -d. -f 1)
+export EDITOR="vim"
+export HISTTIMEFORMAT="%a %b %d %H:%M:%S %Z %Y - "
+export HISTFILESIZE=99999
+export HISTSIZE=99999
+
+# Path
+export PATH="$PATH:/opt/local/bin:/opt/local/sbin"
+export PATH="$PATH:/Users/stockrt/Dropbox/stockrt/scripts"
+export PATH="$PATH:/usr/local/mysql/bin"
+
+# Go
+export GOPATH="$HOME/go"
+export PATH="$PATH:$HOME/go/bin"
+
+# Android
+export ANDROID_HOME="$HOME/android/android-sdk"
+export PATH="$PATH:$HOME/android/android-sdk/build-tools/21.1.1"
+export PATH="$PATH:$HOME/android/android-sdk/platform-tools"
+export PATH="$PATH:$HOME/android/android-sdk/tools"
+export PATH="$PATH:$HOME/android/android-studio/bin"
+export PATH="$PATH:$HOME/android/android-ndk-r10d"
+
+# Java
+export JAVA_HOME="/opt/java"
+export PATH="$PATH:/opt/java/bin"
+export PATH="$PATH:/opt/apache-ant/bin"
+export PATH="$PATH:/opt/apache-maven/bin"
+export PATH="$PATH:$HOME/eclipse"
+
+# Node
+export PATH="$PATH:$HOME/node_modules/.bin"
+export PATH="$PATH:$HOME/node/bin"
+
 # Python
+export PATH="/usr/python27/bin:/usr/python26/bin:$PATH"
 alias pa='source "$HOME/.virtualenvs/venv/bin/activate" ; source "$HOME/.virtualenvs/venv/bin/virtualenvwrapper.sh"'
 #[[ -f "$HOME/.virtualenvs/venv/bin/activate" ]] && source "$HOME/.virtualenvs/venv/bin/activate"
 #[[ -f "$HOME/.virtualenvs/venv/bin/virtualenvwrapper.sh" ]] && source "$HOME/.virtualenvs/venv/bin/virtualenvwrapper.sh"
@@ -124,10 +130,12 @@ then
 fi
 
 # Docker
-# Modern times
 eval $(direnv hook bash)
 eval $(docker-machine env)
 [[ -f "$HOME/.docker-completion.bash" ]] && source "$HOME/.docker-completion.bash"
+export DOCKER_MACHINE_WRAPPED="true"
+[[ -f "$HOME/.docker-machine-wrapper.bash" ]] && source "$HOME/.docker-machine-wrapper.bash"
+[[ -f "$HOME/.docker-machine-completion.bash" ]] && source "$HOME/.docker-machine-completion.bash"
 
 # Aliases all and other custom (private) aliases
 [[ -f /etc/profile.d/aliases-loader.sh ]] && source /etc/profile.d/aliases-loader.sh
