@@ -104,14 +104,16 @@ export PATH="$PATH:$HOME/node/bin"
 
 # Python
 export PATH="/usr/python27/bin:/usr/python26/bin:$PATH"
-alias pa='source "$HOME/.virtualenvs/venv/bin/activate" ; source "$HOME/.virtualenvs/venv/bin/virtualenvwrapper.sh"'
+[[ -f "$HOME/.virtualenvs/venv/bin/activate" ]] && source "$HOME/.virtualenvs/venv/bin/activate"
+[[ -f "$HOME/.virtualenvs/venv/bin/virtualenvwrapper.sh" ]] && source "$HOME/.virtualenvs/venv/bin/virtualenvwrapper.sh"
 
 # Ruby
 export PATH="$PATH:$HOME/.rvm/bin"
-alias ra='source "$HOME/.rvm/scripts/rvm" ; source "$HOME/.rvm/scripts/completion"'
+[[ -f "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+[[ -f "$HOME/.rvm/scripts/completion" ]] && source "$HOME/.rvm/scripts/completion"
 
 # Git
-alias ga='source "$HOME/.git-activate.sh"'
+[[ -f "$HOME/.git-activate.sh" ]] && source "$HOME/.git-activate.sh"
 
 # Modern times
 #eval $(direnv hook bash)
