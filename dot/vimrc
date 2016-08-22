@@ -18,10 +18,10 @@ set cpoptions=aABceFsmq
 filetype plugin indent on
 filetype plugin on
 
-" Backup
-set backup                              " keeps file backups
-set backupdir=~/.vim/backup
-set directory=~/.vim/tmp
+" Backup/Swap
+set nobackup
+set nowritebackup
+set noswapfile
 
 " Code
 set showmatch                           " shows matching block delimiters
