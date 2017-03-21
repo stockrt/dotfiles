@@ -82,8 +82,7 @@ export PATH="$PATH:/Users/stockrt/Dropbox/stockrt/scripts"
 export PATH="$PATH:/usr/local/mysql/bin"
 
 # Go
-export GOPATH="$HOME/.go"
-export PATH="$PATH:$HOME/.go/bin"
+export PATH="$PATH:$HOME/go/bin"
 
 # Android
 export ANDROID_HOME="$HOME/android/android-sdk"
