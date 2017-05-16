@@ -94,6 +94,7 @@ export PATH="$PATH:$HOME/android/android-ndk-r10d"
 
 # Java
 export JAVA_HOME="/opt/java"
+export JAVA_HOME="$(/usr/libexec/java_home)"
 export PATH="$PATH:/opt/java/bin"
 export PATH="$PATH:/opt/apache-ant/bin"
 export PATH="$PATH:/opt/apache-maven/bin"
