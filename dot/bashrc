@@ -122,7 +122,7 @@ export PATH="$PATH:$HOME/.rvm/bin"
 #eval $(direnv hook bash)
 
 # Docker
-alias da='source "$HOME/.docker-activate.sh"'
+[[ -f "$HOME/.docker-completion.bash" ]] && source "$HOME/.docker-completion.bash"
 
 # SSH
 _compssh () {
