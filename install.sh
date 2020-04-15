@@ -30,14 +30,12 @@ usage () {
     echo "
 This script installs the dotfiles in your homedir.
 
-Usage: $0 -n <name> -e <email> -u <github user> -p <github password>
-    -n Your full name.
-    -e E-mail address.
-    -u Github user.
-    -p Github password.
+Usage: $0 -n <name> -e <email>
+  -n  Your full name (for gitconfig)
+  -e  E-mail address (for gitconfig)
 
 Example:
-    $0 -n \"Rogério Carvalho Schneider\" -e stockrt@gmail.com -u stockrt -p secret
+    $0 -n \"Rogério Carvalho Schneider\" -e stockrt@gmail.com
 "
 }
 
@@ -49,12 +47,6 @@ do
             ;;
         e)
             email="$OPTARG"
-            ;;
-        u)
-            gituser="$OPTARG"
-            ;;
-        p)
-            gitpass="$OPTARG"
             ;;
         h)
             usage
@@ -68,7 +60,7 @@ do
 done
 shift $(($OPTIND - 1))
 
-if [[ -z "$name" || -z "$email" || -z "$gituser" || -z "$gitpass" ]]
+if [[ -z "$name" || -z "$email" ]]
 then
     usage
     exit 1
@@ -99,8 +91,6 @@ do
     if [[ "$DEST" == ".gitconfig" ]]; then
         sed -e "s/@@name@@/$name/g"         \
             -e "s/@@email@@/$email/g"       \
-            -e "s/@@gituser@@/$gituser/g"   \
-            -e "s/@@gitpass@@/$gitpass/g"   \
             $SOURCE > ${SOURCE}.filtered
         cp -v ${SOURCE}.filtered ~/$DEST
         rm -f ${SOURCE}.filtered
