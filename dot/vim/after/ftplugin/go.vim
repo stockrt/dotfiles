@@ -1,6 +1,3 @@
-set listchars=trail:-   " show trailing spaces
-set expandtab!          " use hard tabs
-
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set invlist
+set softtabstop=0
+set noexpandtab         " use hard tabs
