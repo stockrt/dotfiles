@@ -24,20 +24,20 @@ set nowritebackup
 set noswapfile
 
 " Code
-set showmatch                           " shows matching block delimiters
+set showmatch                           " show matching block delimiters
 set matchtime=5
 set syntax=on                           " nice colors when coding
 syntax on                               " nice colors when coding
 highlight Vars ctermbg=yellow ctermfg=black
-let m = matchadd('Vars', '%\w\+%')      " matches %VAR% %var% %T_var%
-let m = matchadd('Vars', '@\w\+@')      " matches @VAR@ @var@ @T_var@
-"let m = matchadd('Vars', '\$\w\+')      " matches $VAR $var $T_var
-set listchars=tab:>-,trail:-            " shows tabs and trailing spaces and tabs
+let m = matchadd('Vars', '%\w\+%')      " match %VAR% %var% %T_var%
+let m = matchadd('Vars', '@\w\+@')      " match @VAR@ @var@ @T_var@
+"let m = matchadd('Vars', '\$\w\+')      " match $VAR $var $T_var
+set listchars=tab:>-,trail:-            " show tabs and trailing spaces
 set list
 
 " Indent
 set autoindent                          " indentation is important
-set expandtab                           " uses spaces for tab
+set expandtab                           " use spaces for tab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
