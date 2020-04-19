@@ -84,6 +84,9 @@ export PATH="$PATH:/usr/local/mysql/bin"
 
 # Go
 export PATH="$PATH:$HOME/go/bin"
+alias gr='go run'
+alias gb='go build'
+alias gf='gofmt -w'
 
 # Android
 export ANDROID_HOME="$HOME/android/android-sdk"
