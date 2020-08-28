@@ -20,27 +20,9 @@ fi
 
 alias egrep="egrep --color"
 alias grep="grep --color"
-#alias rz='lrz -br'
-#alias sz='lsz -br'
 
-# Tahoe
-alias t='tahoe -d $HOME/.tahoe'
-alias tw='tahoe -d $HOME/.tahoe webopen'
-alias tp='tahoe -d $HOME/.tahoe-private'
-alias tpw='tahoe -d $HOME/.tahoe-private webopen'
-
-# Dark
 alias s='export HISTFILE=/dev/null && exit' # no bash history
 alias nh='export HISTFILE=/dev/null' # no bash history
-alias lk='sudo logkeys -s -d /dev/input/event5 -o /var/log/logkeys.log' # start logkeys
-alias unlk='sudo logkeys -k >/dev/null 2>&1' # stop logkeys
-alias lkv='sudo logkeys -s -d /dev/input/event5 -o /var/log/logkeys.log ; sleep 1 ; pslk' # start logkeys (verbose check)
-alias unlkv='sudo logkeys -k ; sleep 1 ; pslk' # stop logkeys (verbose check - only display if already stopped)
-alias pslk='ps -ef | grep [l]ogkeys'
-alias catlk='sudo cat /var/log/logkeys.log'
-alias taillk='sudo tail -n 100 -f /var/log/logkeys.log'
-alias vilk='sudo vi /var/log/logkeys.log'
-alias rmlk='sudo rm -f /var/log/logkeys.log'
 
 # Def
 inversor() {
@@ -120,9 +102,6 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 # Git
 [[ -f "$HOME/.git-activate.sh" ]] && source "$HOME/.git-activate.sh"
-
-# Modern times
-#eval $(direnv hook bash)
 
 # Docker
 [[ -f "$HOME/.docker-completion.bash" ]] && source "$HOME/.docker-completion.bash"
