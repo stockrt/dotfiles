@@ -12,6 +12,10 @@ then
     alias l.='ls -d .* --color=tty'
     alias which='alias | /usr/bin/which'
 else
+    # Old Bash 3.2.57
+    # https://discussions.apple.com/thread/250911992
+    export BASH_SILENCE_DEPRECATION_WARNING=1
+
     alias ls='ls -G'
     alias ll='ls -la -G'
     alias l.='ls -d .* -G'
